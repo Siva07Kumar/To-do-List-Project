@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,scale=1.0">
+    <title>Things to do:</title>
+    <style>
+        /* giving styles for the whole page */
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* styles for header element */
+        header {
+            background-color: blue;
+            height: 50px;
+        }
+
+        header h1 {
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        /* apply styles to main   */
+        main {
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+            border: 3px solid pink;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        /* styles for mytext */
+        #mytext {
+            padding: 0 10px;
+            margin-right: 10px;
+            height: 30px;
+        }
+
+        /* styles for add button */
+        #addbtn {
+            background-color: seagreen;
+            padding: 5px;
+        }
+
+        change the style when mouse hover that button #addbtn:hover {
+            cursor: pointer;
+            background-color: sienna;
+        }
+
+        /*add the styles for unorderd list*/
+        ul {
+            width: 400px;
+            background-color: pink;
+            list-style: none;
+        }
+
+        /* creates styles for list items */
+        li {
+            position: relative;
+            padding: 10px;
+        }
+
+        /* adding styles for the close button */
+        .close {
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /*to point out the close button */
+        .close:hover {
+            background-color: skyblue;
+        }
+
+        /*to strike out the list items */
+        .strikeout:checked {
+            text-decoration: line-through;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Things to do:</h1>
+    </header>
+    <main>
+        <ul id="myul" class="myclass">
+            <li class="checked">
+
+            </li>
+        </ul>
+        <form>
+            <input type="text" id="mytext" placeholder="Enter the text here">
+            <span onclick="mylist()" id="addbtn"> Add</span>
+        </form>
+    </main>
+    <script>
+        // function to add items in the list
+        function mylist() {
+            var ul = document.getElementById("myul");
+            var li = document.createElement("li");
+            li.className = "todolist";
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = 1;
+            checkbox.name = "strikeout";
+            li.appendChild(checkbox);
+            var mytxt = document.getElementById("mytext").value;
+            li.appendChild(document.createTextNode(mytext.value));
+            ul.appendChild(li);
+            if (mytxt == "") {
+                alert("Input field is empty");
+            } else {
+                document.getElementById("myul").appendChild(li);
+            }
+            // create a close button to all list items
+            var list = document.getElementsByTagName("li");
+            for (var i = 0; i < list.length; i++) {
+                var span = document.createElement("span");
+                span.className = "close";
+                var close = document.createTextNode("X");
+                span.appendChild(close);
+                list[i].appendChild(span);
+            }
+            // create the hide button to hide the list iems
+            var close = document.getElementsByClassName("close");
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    var d = this.parentElement;
+                    d.style.display = "none";
+                }
+            }
+            // make a strike out the list items
+            var strike = document.getElementsByClassName("todolist");
+            for (i = 0; i < strike.length; i++) {
+                strike[i].onclick = function () {
+                    var c = this.parentElement;
+                    c.style.textDecoration = "line-through";
+                }
+
+
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
